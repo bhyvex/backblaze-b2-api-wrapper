@@ -1,3 +1,5 @@
+[![Latest Stable Version](https://poser.pugx.org/danrovito/backblaze-b2-api-wrapper/v/stable)](https://packagist.org/packages/danrovito/backblaze-b2-api-wrapper) [![Total Downloads](https://poser.pugx.org/danrovito/backblaze-b2-api-wrapper/downloads)](https://packagist.org/packages/danrovito/backblaze-b2-api-wrapper) [![Latest Unstable Version](https://poser.pugx.org/danrovito/backblaze-b2-api-wrapper/v/unstable)](https://packagist.org/packages/danrovito/backblaze-b2-api-wrapper) [![License](https://poser.pugx.org/danrovito/backblaze-b2-api-wrapper/license)](https://packagist.org/packages/danrovito/backblaze-b2-api-wrapper)
+
 #Backblaze B2 API Wrapper by [Dan Rovito](https://twitter.com/danrovito)
 This is a PHP wrapper for the [Backblaze B2](https://www.backblaze.com/b2/cloud-storage.html) API.
 
@@ -20,7 +22,7 @@ Add to your composer.json
 
 ##Below you'll find more information on how to carry out the specific functions of the API wrapper.
 
-###Authorization 
+###Authorization
 
 You'll need to authorize your B2 account to retrieve certain information to use in later API calls.  The response body will contain the following:
 
