@@ -53,31 +53,15 @@
         public function b2_create_bucket($api_bucket_name, $bucket_type)
         {
             $account_id = $this->account_id; // Obtained from your B2 account page
-            $api_url = $this->apiUrl; // From b2_authorize_account call
-            $auth_token = $this->authToken; // From b2_authorize_account call
+            $api_url = $this->apiUrl.'/b2api/v1/b2_create_bucket'; // From b2_authorize_account call
             $bucket_name = $api_bucket_name; // 6 char min, 50 char max: letters, digits, - and _
             $bucket_type = $bucket_type; // Either allPublic or allPrivate
-
-            $session = curl_init($api_url.'/b2api/v1/b2_create_bucket');
 
             // Add post fields
             $data = ['accountId' => $account_id, 'bucketName' => $bucket_name, 'bucketType' => $bucket_type];
             $post_fields = json_encode($data);
-            curl_setopt($session, CURLOPT_POSTFIELDS, $post_fields);
 
-            // Add headers
-            $headers = [];
-            $headers[] = 'Authorization: '.$auth_token;
-            curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
-
-            curl_setopt($session, CURLOPT_POST, true); // HTTP POST
-            curl_setopt($session, CURLOPT_RETURNTRANSFER, true);  // Receive server response
-
-            $http_result = curl_exec($session); //results
-
-            curl_close($session); // Clean up
-
-            return json_encode($http_result); // show response
+            return $this->sendPost($api_url, $post_fields)
         }
 
         //Delete Bucket
@@ -295,5 +279,33 @@
         //Upload part
         public function b2_upload_part()
         {
+        }
+
+        //Send GET Request
+        public function sendGet()
+        {
+
+        }
+
+        //Send POST Request
+        public function sendPost($api_url, $post_fields)
+        {
+            $session = curl_init($api_url);
+            
+            curl_setopt($session, CURLOPT_POSTFIELDS, $post_fields);
+
+            // Add headers
+            $headers = [];
+            $headers[] = 'Authorization: '.$this->authToken;
+            curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
+
+            curl_setopt($session, CURLOPT_POST, true); // HTTP POST
+            curl_setopt($session, CURLOPT_RETURNTRANSFER, true);  // Receive server response
+
+            $http_result = curl_exec($session); //results
+
+            curl_close($session); // Clean up
+
+            return json_encode($http_result); // show response
         }
     }
