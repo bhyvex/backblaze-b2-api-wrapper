@@ -38,6 +38,7 @@
             $json = json_decode($http_result);
             $this->apiUrl = $json->apiUrl;
             $this->authToken = $json->authorizationToken;
+            $this->downloadUrl = $json->downloadUrl;
 
             //Print result code if it doesn't equal 200
             if ($http_code != 200) {
@@ -76,7 +77,7 @@
 
             curl_close($session); // Clean up
 
-            return json_encode($http_result); // Tell me about the rabbits, George!
+            return json_encode($http_result); // show response
         }
 
         //Delete Bucket
@@ -106,7 +107,7 @@
 
             curl_close($session); // Clean up
 
-            return json_encode($http_result); // Tell me about the rabbits, George!
+            return json_encode($http_result); // show response
         }
 
         //Delete file version
@@ -136,17 +137,50 @@
 
             curl_close($session); // Clean up
 
-            return json_encode($http_result); // Tell me about the rabbits, George!
+            return json_encode($http_result); // show response
         }
 
         //Download file by ID
-        public function b2_download_file_by_id()
+        public function b2_download_file_by_id($fileID)
         {
+            $download_url = $this->downloadUrl; // From b2_authorize_account call
+            $auth_token = $this->authToken; // From b2_authorize_account call
+            $file_id = $fileID; // The ID of the file you want to download
+            $uri = $download_url . "/b2api/v1/b2_download_file_by_id?fileId=" . $file_id;
+
+            $session = curl_init($uri);
+
+            // Add headers
+            $headers = [];
+            $headers[] = 'Authorization: '.$auth_token;
+            curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
+
+            curl_setopt($session, CURLOPT_HTTPGET, true); // HTTP GET
+            curl_setopt($session, CURLOPT_RETURNTRANSFER, true);  // Receive server response
+            $http_result = curl_exec($session); // Let's do this!
+            curl_close ($session); // Clean up
+
+            return $http_result; // show response
         }
 
         //Download file by Name
-        public function b2_download_file_by_name()
+        public function b2_download_file_by_name($bucketName, $fileName)
         {
+            $auth_token = $this->authToken; // From b2_authorize_account call
+            $uri = $this->downloadUrl . "/file/" . $bucketName . "/" . $fileName;
+
+            $session = curl_init($uri);
+
+            // Add headers
+            $headers = array();
+            $headers[] = "Authorization: " . $auth_token;
+            curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
+
+            curl_setopt($session, CURLOPT_HTTPGET, true); // HTTP POST
+            curl_setopt($session, CURLOPT_RETURNTRANSFER, true);  // Receive server response
+            $http_result = curl_exec($session); // Let's do this!
+            curl_close ($session); // Clean up
+            return $http_result; // show response
         }
 
         //Get File Info
