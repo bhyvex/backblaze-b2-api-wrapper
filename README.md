@@ -1,4 +1,4 @@
-#Backblaze B2 API Wrapper by [Dan Rovito](https://www.danrovito.com)
+#Backblaze B2 API Wrapper by [Dan Rovito](https://twitter.com/danrovito)
 This is a PHP wrapper for the [Backblaze B2](https://www.backblaze.com/b2/cloud-storage.html) API.
 
 This wrapper is in active development.
