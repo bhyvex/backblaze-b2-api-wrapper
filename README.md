@@ -128,18 +128,6 @@ You will receive a response similar to the following:
 }
 ```
 
-###Download File by ID
-
-####Sample Code
-
-Pass the file ID to receive the file.
-
-```php
-$file = $b2->b2_download_file_by_id('FILEID');
-```
-
-The output is the file that you asked for.
-
 ###Delete File by Name
 
 ####Sample Code
@@ -151,6 +139,18 @@ $file = $b2->b2_download_file_by_name('BUCKETNAME', 'FILENAME');
 ```
 
 You will receive a response similar to the following:
+
+The output is the file that you asked for.
+
+###Download File by ID
+
+####Sample Code
+
+Pass the file ID to receive the file.
+
+```php
+$file = $b2->b2_download_file_by_id('FILEID');
+```
 
 The output is the file that you asked for.
 
