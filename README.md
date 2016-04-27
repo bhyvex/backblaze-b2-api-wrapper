@@ -15,7 +15,7 @@ All responses are JSON
 Add to your composer.json
 
 ```php
-  "ohiovalleyphp/backblaze-b2-api-wrapper": "dev-master"
+  "danrovito/backblaze-b2-api-wrapper": "dev-master"
 ```
 
 ##Below you'll find more information on how to carry out the specific functions of the API wrapper.
