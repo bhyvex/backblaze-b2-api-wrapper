@@ -146,7 +146,7 @@
             $download_url = $this->downloadUrl; // From b2_authorize_account call
             $auth_token = $this->authToken; // From b2_authorize_account call
             $file_id = $fileID; // The ID of the file you want to download
-            $uri = $download_url . "/b2api/v1/b2_download_file_by_id?fileId=" . $file_id;
+            $uri = $download_url.'/b2api/v1/b2_download_file_by_id?fileId='.$file_id;
 
             $session = curl_init($uri);
 
@@ -158,7 +158,7 @@
             curl_setopt($session, CURLOPT_HTTPGET, true); // HTTP GET
             curl_setopt($session, CURLOPT_RETURNTRANSFER, true);  // Receive server response
             $http_result = curl_exec($session); // results
-            curl_close ($session); // Clean up
+            curl_close($session); // Clean up
 
             return $http_result; // show response
         }
@@ -167,19 +167,19 @@
         public function b2_download_file_by_name($bucketName, $fileName)
         {
             $auth_token = $this->authToken; // From b2_authorize_account call
-            $uri = $this->downloadUrl . "/file/" . $bucketName . "/" . $fileName;
+            $uri = $this->downloadUrl.'/file/'.$bucketName.'/'.$fileName;
 
             $session = curl_init($uri);
 
             // Add headers
-            $headers = array();
-            $headers[] = "Authorization: " . $auth_token;
+            $headers = [];
+            $headers[] = 'Authorization: '.$auth_token;
             curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
 
             curl_setopt($session, CURLOPT_HTTPGET, true); // HTTP POST
             curl_setopt($session, CURLOPT_RETURNTRANSFER, true);  // Receive server response
             $http_result = curl_exec($session); // results
-            curl_close ($session); // Clean up
+            curl_close($session); // Clean up
             return $http_result; // show response
         }
 
@@ -218,22 +218,22 @@
             $auth_token = $this->authToken; // From b2_authorize_account call
             $bucket_id = $bucketID;  // The ID of the bucket you want to upload to
 
-            $session = curl_init($api_url .  "/b2api/v1/b2_get_upload_url");
+            $session = curl_init($api_url.'/b2api/v1/b2_get_upload_url');
 
             // Add post fields
-            $data = array("bucketId" => $bucket_id);
+            $data = ['bucketId' => $bucket_id];
             $post_fields = json_encode($data);
             curl_setopt($session, CURLOPT_POSTFIELDS, $post_fields);
 
             // Add headers
-            $headers = array();
-            $headers[] = "Authorization: " . $auth_token;
+            $headers = [];
+            $headers[] = 'Authorization: '.$auth_token;
             curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
 
             curl_setopt($session, CURLOPT_POST, true); // HTTP POST
             curl_setopt($session, CURLOPT_RETURNTRANSFER, true);  // Receive server response
             $server_output = curl_exec($session); // results
-            curl_close ($session); // Clean up
+            curl_close($session); // Clean up
             return $http_result; // return response
         }
 
@@ -260,31 +260,26 @@
         //List parts
         public function b2_list_parts()
         {
-
         }
 
         //List unfinished large files
         public function b2_list_unfinished_large_files()
         {
-
         }
 
         //Start large file
         public function b2_start_large_file()
         {
-
         }
 
         //Finish Large file
         public function b2_finish_large_file()
         {
-
         }
 
         //Get Upload Part URL
         public function b2_get_upload_part_url()
         {
-
         }
 
         //update bucket
@@ -300,6 +295,5 @@
         //Upload part
         public function b2_upload_part()
         {
-
         }
     }
