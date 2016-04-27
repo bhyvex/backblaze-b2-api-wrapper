@@ -157,7 +157,7 @@
 
             curl_setopt($session, CURLOPT_HTTPGET, true); // HTTP GET
             curl_setopt($session, CURLOPT_RETURNTRANSFER, true);  // Receive server response
-            $http_result = curl_exec($session); // Let's do this!
+            $http_result = curl_exec($session); // results
             curl_close ($session); // Clean up
 
             return $http_result; // show response
@@ -178,7 +178,7 @@
 
             curl_setopt($session, CURLOPT_HTTPGET, true); // HTTP POST
             curl_setopt($session, CURLOPT_RETURNTRANSFER, true);  // Receive server response
-            $http_result = curl_exec($session); // Let's do this!
+            $http_result = curl_exec($session); // results
             curl_close ($session); // Clean up
             return $http_result; // show response
         }
@@ -208,12 +208,33 @@
 
             curl_close($session); // Clean up
 
-            return json_encode($http_result); // Tell me about the rabbits, George!
+            return json_encode($http_result); // return response
         }
 
         //Get upload URL
-        public function b2_get_upload_url()
+        public function b2_get_upload_url($bucketID)
         {
+            $api_url = $this->apiUrl; // From b2_authorize_account call
+            $auth_token = $this->authToken; // From b2_authorize_account call
+            $bucket_id = $bucketID;  // The ID of the bucket you want to upload to
+
+            $session = curl_init($api_url .  "/b2api/v1/b2_get_upload_url");
+
+            // Add post fields
+            $data = array("bucketId" => $bucket_id);
+            $post_fields = json_encode($data);
+            curl_setopt($session, CURLOPT_POSTFIELDS, $post_fields);
+
+            // Add headers
+            $headers = array();
+            $headers[] = "Authorization: " . $auth_token;
+            curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
+
+            curl_setopt($session, CURLOPT_POST, true); // HTTP POST
+            curl_setopt($session, CURLOPT_RETURNTRANSFER, true);  // Receive server response
+            $server_output = curl_exec($session); // results
+            curl_close ($session); // Clean up
+            return $http_result; // return response
         }
 
         //Hide File
@@ -236,13 +257,49 @@
         {
         }
 
-        //List update bucket
+        //List parts
+        public function b2_list_parts()
+        {
+
+        }
+
+        //List unfinished large files
+        public function b2_list_unfinished_large_files()
+        {
+
+        }
+
+        //Start large file
+        public function b2_start_large_file()
+        {
+
+        }
+
+        //Finish Large file
+        public function b2_finish_large_file()
+        {
+
+        }
+
+        //Get Upload Part URL
+        public function b2_get_upload_part_url()
+        {
+
+        }
+
+        //update bucket
         public function b2_update_bucket()
         {
         }
 
-        //List upload file
+        //upload file
         public function b2_upload_file()
         {
+        }
+
+        //Upload part
+        public function b2_upload_part()
+        {
+
         }
     }

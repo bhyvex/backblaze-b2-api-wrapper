@@ -153,3 +153,23 @@ $file = $b2->b2_download_file_by_name('BUCKETNAME', 'FILENAME');
 You will receive a response similar to the following:
 
 The output is the file that you asked for.
+
+###Get upload URL
+
+####Sample Code
+
+Pass the bucket ID to receive the upload url.
+
+```php
+$uploadUrl = $b2->b2_get_upload_url('BUCKETID');
+```
+
+You will receive a response similar to the following:
+
+```javascript
+{
+    "bucketId" : "4a48fe8875c6214145260818",
+    "uploadUrl" : "https://pod-000-1005-03.backblaze.com/b2api/v1/b2_upload_file?cvt=c001_v0001005_t0027&bucket=4a48fe8875c6214145260818",
+    "authorizationToken" : "2_20151009170037_f504a0f39a0f4e657337e624_9754dde94359bd7b8f1445c8f4cc1a231a33f714_upld"
+}
+```
