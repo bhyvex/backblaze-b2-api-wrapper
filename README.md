@@ -20,7 +20,7 @@ Add to your composer.json
 
 ##Below you'll find more information on how to carry out the specific functions of the API wrapper.
 
-###Authorization
+###Authorization 
 
 You'll need to authorize your B2 account to retrieve certain information to use in later API calls.  The response body will contain the following:
 
