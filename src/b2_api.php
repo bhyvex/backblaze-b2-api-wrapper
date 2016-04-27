@@ -284,14 +284,13 @@
         //Send GET Request
         public function sendGet()
         {
-
         }
 
         //Send POST Request
         public function sendPost($api_url, $post_fields)
         {
             $session = curl_init($api_url);
-            
+
             curl_setopt($session, CURLOPT_POSTFIELDS, $post_fields);
 
             // Add headers
