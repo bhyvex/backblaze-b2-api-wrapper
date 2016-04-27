@@ -1,5 +1,5 @@
 {
-  "name": "ohiovalleyphp/backblaze-b2-api-wrapper",
+  "name": "danrovito/backblaze-b2-api-wrapper",
   "description": "Backblaze B2 API bindings",
   "keywords": [
     "backblaze",
@@ -21,9 +21,7 @@
     "ext-mbstring": "*"
   },
   "autoload": {
-    "classmap" : [
-      "b2_api.php"
-    ]
+        "psr-4": { "": "src/" }
   },
   "minimum-stability": "dev",
   "extra": {
