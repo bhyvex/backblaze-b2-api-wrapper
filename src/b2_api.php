@@ -61,7 +61,7 @@
             $data = ['accountId' => $account_id, 'bucketName' => $bucket_name, 'bucketType' => $bucket_type];
             $post_fields = json_encode($data);
 
-            return $this->sendPost($api_url, $post_fields)
+            return $this->sendPost($api_url, $post_fields);
         }
 
         //Delete Bucket
