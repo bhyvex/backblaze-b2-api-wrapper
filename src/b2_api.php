@@ -218,7 +218,7 @@
             curl_setopt($session, CURLOPT_RETURNTRANSFER, true);  // Receive server response
             $server_output = curl_exec($session); // results
             curl_close($session); // Clean up
-            return $http_result; // return response
+            return $server_output; // return response
         }
 
         //Hide File
