@@ -3,7 +3,7 @@
 #Backblaze B2 API Wrapper by [Dan Rovito](https://twitter.com/danrovito)
 This is a PHP wrapper for the [Backblaze B2](https://www.backblaze.com/b2/cloud-storage.html) API.
 
-This wrapper is in active development.
+This wrapper is abandoned.
 
 ##From the B2 Website
 > B2 Cloud Storage is a cloud service for storing files in the cloud.
